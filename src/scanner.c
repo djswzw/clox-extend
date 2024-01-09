@@ -79,6 +79,7 @@ static TokenType identifierType() {
 			}
 		}
 		break;
+	case 'd': return checkKeyword(1, 5, "elete", TOKEN_DELETE);
 	case 'e': return checkKeyword(1, 3, "lse", TOKEN_ELSE);
 	case 'f':
 		if (scanner.current - scanner.start > 1) {
@@ -200,6 +201,8 @@ Token scanToken() {
 		case '+': return makeToken(TOKEN_PLUS);
 		case '/': return makeToken(TOKEN_SLASH);
 		case '*': return makeToken(TOKEN_STAR);
+		case '[': return makeToken(TOKEN_LEFT_BRACKET);
+		case ']': return makeToken(TOKEN_RIGHT_BRACKET);
 		case '!':
 			return makeToken(
 				match('=') ? TOKEN_BANG_EQUAL : TOKEN_BANG);
